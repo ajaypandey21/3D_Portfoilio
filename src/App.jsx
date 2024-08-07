@@ -1,6 +1,53 @@
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import Navbar from "./components/Navbar";
+import { About, Contact, Home, Projects } from "./pages";
+
+const Layout = ({ children }) => (
+  <main className="bg-slate-300/20">
+    <Navbar />
+    {children}
+  </main>
+);
+
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Layout>
+        <Home />
+      </Layout>
+    ),
+  },
+  {
+    path: "/about",
+    element: (
+      <Layout>
+        <About />
+      </Layout>
+    ),
+  },
+  {
+    path: "/contact",
+    element: (
+      <Layout>
+        <Contact />
+      </Layout>
+    ),
+  },
+  {
+    path: "/projects",
+    element: (
+      <Layout>
+        <Projects />
+      </Layout>
+    ),
+  },
+]);
 const App = () => {
   return (
-    <h1 className="text-3xl text-red-700 font-bold underline">Hello world!</h1>
+    <main className="bg-slate-300/20">
+      <RouterProvider router={router} />
+    </main>
   );
 };
 
